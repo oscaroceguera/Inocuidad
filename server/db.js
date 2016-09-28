@@ -1,20 +1,10 @@
 var Sequelize = require('sequelize')
-var env = process.env.NODE_ENV || 'development'
-var conf = require('./config')
 var sequelize
 
-if (env === 'production') {
-  sequelize = new Sequelize(conf.database, conf.user, conf.password, {
-    host: 'localhost',
-    port: 5432,
-    dialect: 'postgres'
-  })
-} else {
-  sequelize = new Sequelize(undefined, undefined, undefined, {
-    dialect: 'sqlite',
-    storage: __dirname + '/data/dev-tecsia-api.sqlite'
-  })
-}
+sequelize = new Sequelize(undefined, undefined, undefined, {
+  dialect: 'sqlite',
+  storage: __dirname + '/data/dev-tecsia-api.sqlite'
+})
 
 var db = {}
 
